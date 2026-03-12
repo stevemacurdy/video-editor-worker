@@ -43,7 +43,7 @@ def get_supabase():
 
 async def download_video(url: str, dest: str):
     """Stream-download a video from URL to local path."""
-    async with httpx.AsyncClient(timeout=300, follow_redirects=True) as client:
+    async with httpx.AsyncClient(timeout=1800, follow_redirects=True) as client:
         async with client.stream("GET", url) as resp:
             resp.raise_for_status()
             with open(dest, "wb") as f:
